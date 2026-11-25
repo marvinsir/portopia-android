@@ -25,9 +25,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.9'
       - name: Install Android SDK components
         run: |
           set -euo pipefail
@@ -48,13 +45,11 @@ jobs:
       - name: Validate case data
         run: python3 tools/validate_case.py
       - name: Build the APK
-        run: gradle --no-daemon :app:assembleDebug
+        run: bash tools/build_apk.sh "dist/$APK_NAME"
       - name: Verify signature and package metadata
         run: |
           set -euo pipefail
           tools="$ANDROID_HOME/build-tools/35.0.0"
-          mkdir -p dist
-          cp app/build/outputs/apk/debug/app-debug.apk "dist/$APK_NAME"
           cd dist
           "$tools/apksigner" verify --verbose --print-certs "$APK_NAME" | tee apk-signature.txt
           "$tools/zipalign" -c -v 4 "$APK_NAME"
