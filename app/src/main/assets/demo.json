@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "title": {
+    "ja": "レトロ事件簿：消えた手帳",
+    "zh-Hans": "复古事件簿：消失的笔记本",
+    "zh-Hant": "復古事件簿：消失的筆記本",
+    "en": "RetroCase: The Missing Notebook"
+  },
+  "start": "office",
+  "scenes": {
+    "office": {
+      "title": {
+        "ja": "事務室",
+        "zh-Hans": "办公室",
+        "zh-Hant": "辦公室",
+        "en": "Office"
+      },
+      "text": {
+        "ja": "机の上から手帳がなくなった。",
+        "zh-Hans": "桌上的笔记本不见了。",
+        "zh-Hant": "桌上的筆記本不見了。",
+        "en": "The notebook is missing from the desk."
+      },
+      "art": "room",
+      "actions": [
+        {
+          "label": {
+            "ja": "机を調べる",
+            "zh-Hans": "调查桌面",
+            "zh-Hant": "調查桌面",
+            "en": "Examine the desk"
+          },
+          "set": [
+            "ticket"
+          ],
+          "forbids": [
+            "ticket"
+          ],
+          "reply": {
+            "ja": "古い切符を見つけた。",
+            "zh-Hans": "发现一张旧车票。",
+            "zh-Hant": "發現一張舊車票。",
+            "en": "You found an old train ticket."
+          }
+        },
+        {
+          "label": {
+            "ja": "通りへ行く",
+            "zh-Hans": "前往街道",
+            "zh-Hant": "前往街道",
+            "en": "Go outside"
+          },
+          "goto": "street"
+        }
+      ]
+    },
+    "street": {
+      "title": {
+        "ja": "通り",
+        "zh-Hans": "街道",
+        "zh-Hant": "街道",
+        "en": "Street"
+      },
+      "text": {
+        "ja": "駅の近くに係員がいる。",
+        "zh-Hans": "车站附近有一名工作人员。",
+        "zh-Hant": "車站附近有一名工作人員。",
+        "en": "A station attendant is standing nearby."
+      },
+      "art": "street",
+      "actions": [
+        {
+          "label": {
+            "ja": "係員に聞く",
+            "zh-Hans": "询问工作人员",
+            "zh-Hant": "詢問工作人員",
+            "en": "Question the attendant"
+          },
+          "reply": {
+            "ja": "落とし物を預かっています。",
+            "zh-Hans": "我们保管着失物。",
+            "zh-Hant": "我們保管著失物。",
+            "en": "We keep lost property here."
+          }
+        },
+        {
+          "label": {
+            "ja": "切符を見せる",
+            "zh-Hans": "出示车票",
+            "zh-Hant": "出示車票",
+            "en": "Show the ticket"
+          },
+          "requires": [
+            "ticket"
+          ],
+          "goto": "ending",
+          "set": [
+            "solved"
+          ]
+        },
+        {
+          "label": {
+            "ja": "事務室に戻る",
+            "zh-Hans": "返回办公室",
+            "zh-Hant": "返回辦公室",
+            "en": "Return to the office"
+          },
+          "goto": "office"
+        }
+      ]
+    },
+    "ending": {
+      "title": {
+        "ja": "解決",
+        "zh-Hans": "事件解决",
+        "zh-Hant": "事件解決",
+        "en": "Case closed"
+      },
+      "text": {
+        "ja": "手帳は駅に届けられていた。事件解決。",
+        "zh-Hans": "笔记本已被送到车站。事件解决。",
+        "zh-Hant": "筆記本已被送到車站。事件解決。",
+        "en": "The notebook had been handed in at the station. Case closed."
+      },
+      "art": "room",
+      "actions": []
+    }
+  }
+}
